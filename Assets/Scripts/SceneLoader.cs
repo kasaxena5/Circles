@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public static SceneLoader Instance { get; private set; }
+
     [Header("Prefabs")]
     [SerializeField] private GameObject loadingCanvasPrefab;
 
@@ -15,6 +17,13 @@ public class SceneLoader : MonoBehaviour
     private CanvasGroup canvasGroup;
     private AsyncOperation asyncOperation;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+    }
 
     public void StartScene()
     {
