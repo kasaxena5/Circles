@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 1
-  maxSpeed: 3
+  maxSpeed: 2
 --- !u!95 &2840987447079667827
 Animator:
   serializedVersion: 4

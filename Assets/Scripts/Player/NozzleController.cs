@@ -8,6 +8,9 @@ public class NozzleController : MonoBehaviour
     [SerializeField] private ProtectiveLineController linePrefab;
     [SerializeField] private FloatReference fuel;
 
+    [Header("Configs")]
+    [SerializeField] private float initialFuel;
+
     private ProtectiveLineController activeLine;
     private bool isKeyDown = false;
     private List<Vector2> points = new();
@@ -15,6 +18,7 @@ public class NozzleController : MonoBehaviour
 
     void Start()
     {
+        fuel.value = initialFuel;
     }
 
     void Update()
@@ -32,7 +36,8 @@ public class NozzleController : MonoBehaviour
                 fuel.value--;
             }
 
-            activeLine.SetupLine(points.ToArray());
+            if(activeLine != null)
+                activeLine.SetupLine(points.ToArray());
         }
         else if(Input.GetKeyUp(KeyCode.Space))
         {
