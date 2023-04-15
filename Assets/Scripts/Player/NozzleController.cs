@@ -5,9 +5,10 @@ using UnityEngine;
 public class NozzleController : MonoBehaviour
 {
     [Header("Prefabs")]
-    [SerializeField] private LineController linePrefab;
+    [SerializeField] private ProtectiveLineController linePrefab;
+    [SerializeField] private FloatReference fuel;
 
-    private LineController activeLine;
+    private ProtectiveLineController activeLine;
     private bool isKeyDown = false;
     private List<Vector2> points = new();
 
@@ -25,9 +26,13 @@ public class NozzleController : MonoBehaviour
                 activeLine = Instantiate(linePrefab);
                 isKeyDown = true;
             }
-            points.Add(transform.position);
-            activeLine.SetupLine(points.ToArray());
+            if (fuel.value > 0)
+            {
+                points.Add(transform.position);
+                fuel.value--;
+            }
 
+            activeLine.SetupLine(points.ToArray());
         }
         else if(Input.GetKeyUp(KeyCode.Space))
         {

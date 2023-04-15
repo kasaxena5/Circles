@@ -19,4 +19,13 @@ public class SpikeBehaviour : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.TryGetComponent<ProtectiveLineController>(out ProtectiveLineController plc))
+        {
+            plc.Protect();
+        }
+        Destroy(this.gameObject);
+    }
 }
