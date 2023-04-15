@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float radius;
 
-    private readonly Vector3 pivotAxis = new(0, 0, -1);
+    private readonly Vector3 pivotAxis = new(0, 0, 1);
     private readonly Vector3 pivotPoint = new(0, 0, 0);
 
     void Start()

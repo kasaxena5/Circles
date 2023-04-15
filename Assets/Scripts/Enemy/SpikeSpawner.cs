@@ -12,7 +12,6 @@ public class SpikeSpawner : MonoBehaviour
     [SerializeField] private float maxSpawnWaitTime;
     [SerializeField] private float minSpawnWaitTime;
 
-
     void Start()
     {
         StartCoroutine(SpawnSpikes());
@@ -29,5 +28,4 @@ public class SpikeSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnWaitTime);
         }
     }
-
 }
